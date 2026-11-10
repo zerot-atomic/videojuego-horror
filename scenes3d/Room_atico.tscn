@@ -138,7 +138,7 @@ omni_range = 16.0
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.000, -2.82 )
 
 [node name="SpawnDesdeAtico" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.1, -2.82 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.1, -6.0 )
 
 [node name="Clue_diario_madre" type="Area3D" parent="."]
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.378, 1.000, 1.858 )

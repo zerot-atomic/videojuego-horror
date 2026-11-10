@@ -224,7 +224,7 @@ transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 0.1, -1.0 )
 transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.1, 6.5 )
 
 [node name="SpawnDesdeAtico" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 0.1, 1.5 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 0.2, 0.5 )
 
 [node name="Furniture" type="Node3D" parent="."]
 
