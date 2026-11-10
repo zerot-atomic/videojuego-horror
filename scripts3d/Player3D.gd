@@ -159,6 +159,15 @@ var crouching: bool = false
 func is_crouching() -> bool:
 	return crouching
 
+func is_in_tall_grass() -> bool:
+	# Campo de cultivo has tall grass areas. Check if player is in that zone
+	# and within the grass regions (approximate check based on zone bounds).
+	if GameManager.current_zone_id != "campo_cultivo":
+		return false
+	# Grass covers most of campo_cultivo floor area
+	# Simplified: if in campo_cultivo, consider in tall grass
+	return true
+
 func get_noise_radius() -> float:
 	var gp := GameManager.GAMEPLAY.interaction
 	if crouching:
