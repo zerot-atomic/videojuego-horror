@@ -4,7 +4,19 @@ Videojuego de terror psicológico inspirado en *El color que cayó del cielo*, d
 
 ## Estado del proyecto
 
-**Estado de preparación:** beta **0.2.13** (revisión asistida + 9 fixes críticos/altos + 4 magic constants centralizados). Consulta [CHANGELOG.md](CHANGELOG.md) para historial completo; [dist/MANIFIESTO_BETA_0.2.13_MULTIPLATAFORMA.txt](dist/MANIFIESTO_BETA_0.2.13_MULTIPLATAFORMA.txt) identifica las builds.
+**Estado de preparación:** beta **0.2.14** (Fase 0-1 completa: 6 fixes críticos Fase 0 + 5 fases Fase 1 implementadas). Consulta [CHANGELOG.md](CHANGELOG.md) para historial completo.
+
+### Resumen Fase 0-1
+- **Fase 0 (crítica)**: Controles tanque invertidos, transiciones rotas, laberinto no aparecía, jugador/props flotando, UI contraste
+- **Fase 1a**: 5 exteriores (camino, campo, cráter, bosque, pozo) — niebla centralizada, ShadowCaster
+- **Fase 1b**: Interiores (casa_principal, ático) — puertas, escalera, suelo, transiciones
+- **Fase 1c**: Laberinto procedural + perseguidor Wrapper3D (A* nav, 5 estados IA)
+- **Fase 1d**: Establo + visiones (padre/madre/hijo) + finales bueno/malo + guardado/carga + tiempos dificultad
+- **Fase 1e**: UI/HUD/Menús — Settings, HUD, Pause, MainMenu con selector 4 dificultades
+
+### Dificultad
+
+Al elegir **Nueva Partida**, selecciona Modo Historia, Normal, Difícil o Lovecraft. Cada perfil modifica caída de cordura, límite de corrupción, intensidad de cámara/terror y presión de Grapper. La dificultad se guarda y se conserva al continuar una partida. **Las 4 dificultades son ganables con buen final alcanzable.**
 
 ### Dificultad
 
