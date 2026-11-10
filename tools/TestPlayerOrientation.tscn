@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid://d1h2k3j4l5m6n7]
+
+[ext_resource path="res://tools/TestPlayerOrientation.gd" type="Script" id=1]
+
+[node name="TestPlayerOrientation" type="Node"]
+script = ExtResource( 1 )

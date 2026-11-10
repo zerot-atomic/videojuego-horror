@@ -1,0 +1,6 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts3d/test_vision_ending.gd" type="Script" id=1]
+
+[node name="TestVisionEnding" type="Node"]
+script = ExtResource( 1 )

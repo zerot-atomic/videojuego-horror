@@ -1,0 +1,98 @@
+# La Cosecha del Color - fuente para manual y orientación de jugadores
+
+**Build de referencia:** beta cerrada 0.1.7  
+**Género:** horror psicológico y cósmico, aventura de investigación en primera/tercera persona.  
+**Inspiración:** *El color que cayó del cielo* de H. P. Lovecraft; el juego desarrolla una interpretación propia.
+
+## Premisa
+
+El jugador encarna a un inspector enviado a una granja aislada tras una serie de sucesos inexplicables. Debe recorrer la casa y las zonas conectadas, examinar objetos y reunir pistas para reconstruir lo ocurrido. Algunas pistas requieren tener un objeto específico. Las pistas y los objetos encontrados se consultan en el Diario.
+
+## Ciclo de juego
+
+1. Explorar con cuidado y leer los mensajes de llegada a cada zona.
+2. Acercarse a objetos interactivos y usar Interactuar.
+3. Revisar pistas y objetos en el Diario.
+4. Usar herramientas y pistas para desbloquear nuevas interacciones.
+5. Evitar al perseguidor Grapper y buscar el camino de salida del laberinto.
+6. Llegar a una resolución del misterio.
+
+El juego contiene visiones de personajes. En Android se cierran tocando **CONTINUAR**; en teclado y mando se avanza con la acción Aceptar.
+
+## Controles de la beta
+
+| Acción | PC | Mando configurado | Android |
+|---|---|---|---|
+| Avanzar / retroceder | W / S | Stick izquierdo / cruceta | Joystick virtual |
+| Girar izquierda / derecha | A / D | Stick izquierdo / cruceta | Joystick virtual |
+| Correr | Shift | L3 | Botón CORRER |
+| Agacharse | C | B | Botón AGACHARSE |
+| Interactuar | E | A | Botón USAR |
+| Diario | Tab | Y | Botón DIARIO |
+| Pausa | Esc | Start | Botón PAUSA |
+
+El movimiento usa un marco relativo a la cámara que permanece estable mientras se sostiene una dirección; así el personaje conserva una trayectoria recta aunque la cámara lo siga. La cámara está anclada al jugador y acompaña suavemente sus giros. Opciones permite reasignar controles de teclado y mando. En Android la orientación está configurada en horizontal; el control táctil todavía necesita validación en teléfonos físicos.
+
+## Diario, cordura y perseguidor
+
+- El Diario guarda las pistas narrativas y los objetos recogidos, y tiene botón visible CERRAR.
+- La cordura y la presión del perseguidor varían por dificultad.
+- Grapper persigue al jugador en el laberinto. Tras alcanzarlo, el juego reproduce el susto, aplica pérdida de cordura y lo recoloca detrás del jugador en un corredor libre cercano.
+- El laberinto tiene ramales sin salida. Su ruta correcta es intencionalmente un secreto del jugador; no mostrar la solución en materiales introductorios.
+
+## Dificultades
+
+- **Historia:** cordura baja más despacio y el tiempo de corrupción es más largo. Recomendada para explorar.
+- **Normal:** presión gradual y equilibrada.
+- **Difícil:** la cordura se agota antes y Grapper reacciona con más intensidad.
+- **Lovecraft:** horror cósmico extremo, recursos escasos y poco margen de error; está planteado como muy difícil, pero posible de sobrevivir.
+
+### Valores técnicos de dificultad (referencia interna)
+
+Estos multiplicadores son relativos a Normal y no es necesario mostrarlos en una guía breve para jugadores:
+
+| Modo | Drenaje de cordura | Límite de corrupción | Presión de terror | Dificultad enemiga |
+|---|---:|---:|---:|---:|
+| Historia | 0.35x | 30 min | 0.65x | 0.78x |
+| Normal | 1.00x | 15 min | 1.00x | 1.00x |
+| Difícil | 1.35x | 12 min | 1.30x | 1.12x |
+| Lovecraft | 1.80x | 10 min | 1.65x | 1.22x |
+
+## Dónde ocurre
+
+El recorrido conecta el camino de entrada, la casa (recibidor, sala, cocina y almacén), el ático, el establo, el campo de cultivo, el bosque, el pozo, el cráter del meteorito y el laberinto. El orden del recorrido puede variar por transiciones y hallazgos; no presentar todas las salidas como una secuencia rígida.
+
+## Estado real de las plataformas (1 nov 2026)
+
+- **Windows:** ejecutable QA beta cerrada 0.1.6 disponible; todavía falta documentar una regresión de recorrido completo en una instalación limpia.
+- **Android:** APK QA 0.1.6, firmado para pruebas privadas; falta validar la interfaz y el rendimiento en teléfonos reales. No publicar en tiendas con la firma de depuración.
+- **Mando:** hay asignaciones de botones y navegación de menús configuradas. Todavía no hay validación física con una consola.
+- **Consolas:** no existe build de PlayStation, Xbox o Nintendo. Para iniciar el port se requiere elegir plataforma, acceso aprobado a su programa de desarrolladores, SDK y plantillas de exportación oficiales, firma, configuración de guardado y cumplimiento de certificación. La compatibilidad de rendimiento y mandos también requiere probarse en hardware de cada fabricante.
+- **Linux/macOS:** no forman parte de los paquetes beta actuales y requieren exportación y verificación separadas.
+- **Voces/API:** confirmar que la clave API compartida anteriormente haya sido revocada y reemplazada antes de cualquier beta externa. La clave no debe incrustarse en el proyecto, en NotebookLM ni en los paquetes.
+- **Validación funcional pendiente:** recorrido completo hasta ambos finales; probar guardado/carga, transiciones, escalera y trampilla, movimiento agachado, Grapper y salida del laberinto en los paquetes exportados.
+- **Licencias:** antes de la distribución pública, comprobar que el inventario de atribuciones/licencias cubra todos los recursos incluidos, en especial audio añadido recientemente.
+- **API de voz:** una clave de ElevenLabs se compartió previamente en el chat. Confirmar que ya fue revocada; si no, revocarla y crear una nueva antes de usar el servicio. Nunca insertar claves en la build o en NotebookLM.
+- **Control de versiones:** no hay un commit/tag de Git de referencia documentado en el proyecto. Mantener una copia externa y crear una versión recuperable antes de abrir pruebas.
+- **Linux/macOS:** existen referencias históricas a rutas de texturas que solo difieren por mayúsculas/minúsculas. Resolverlas y probar esos sistemas antes de exportarlos.
+
+## Instrucción sugerida para NotebookLM
+
+> Usa exclusivamente los datos de esta fuente para crear una presentación breve y una guía corta para jugadores en español. Explica controles de forma directa, cómo recoger y revisar pistas, cómo cerrar el Diario y las visiones en Android, qué hacen las dificultades y cómo funciona la persecución de Grapper sin revelar la solución del laberinto. Conserva el tono de horror cósmico de una carpeta de investigación, sin imitar textos de Lovecraft ni inventar mecánicas. Señala que es una beta cerrada 0.1.7 y que consola y validación física Android siguen pendientes. Genera imágenes ilustrativas originales con un inspector de espaldas ante una granja aislada y un cielo púrpura, bosque nocturno, linterna y atmósfera de horror cósmico. Identifícalas como ilustraciones generadas, nunca como capturas reales del juego. Entrega una presentación de 5 a 7 diapositivas y una guía de máximo cinco páginas con una página inicial y controles fáciles de encontrar.
+
+### Ficha visual sugerida para NotebookLM
+
+- **Paleta:** negro carbón, violeta profundo, madera vieja y luz cálida muy limitada.
+- **Encuadres:** inspector de espaldas y pequeño frente a la granja; bosque con niebla; pasillos domésticos gastados; campo bajo cielo violeta; laberinto opresivo.
+- **Sensación:** investigación solitaria y amenaza cósmica ambigua. Evitar monstruos explícitos en cada imagen, exceso de sangre o estética de acción.
+- **Texto de portada posible:** «La tierra responde. La granja no.»
+- **Aviso visual:** las capturas existentes del proyecto son referencias de builds anteriores y pueden no coincidir con la beta 0.1.6; usar arte ilustrativo generado cuando se necesiten imágenes actuales.
+
+## Referencias internas usadas
+
+- `docs/CONTROLES_MULTIPLATAFORMA.md`
+- `docs/GUIA_LABERINTO_DESARROLLADOR.md` (solo mecánicas; no incluir la ruta de solución)
+- `dist/MANIFIESTO_BETA_0.1.6_MULTIPLATAFORMA.txt`
+- `scripts3d/Zone3D.gd` (introducción del juego)
+- `autoload/GameManager.gd` (dificultades y flujo de partida)
+

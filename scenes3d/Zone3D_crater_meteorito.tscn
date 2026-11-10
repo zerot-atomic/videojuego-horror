@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts3d/Zone3D.gd" type="Script" id=1]
+[ext_resource path="res://scenes3d/Room_crater_meteorito.tscn" type="PackedScene" id=2]
+
+[node name="Zone3D_crater_meteorito" type="Node3D"]
+script = ExtResource( 1 )
+zone_id = "crater_meteorito"
+spawn_point_path = NodePath("Room_crater_meteorito/Spawn")
+room_scene = ExtResource( 2 )

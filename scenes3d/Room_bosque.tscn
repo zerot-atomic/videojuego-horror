@@ -1,0 +1,201 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://scripts3d/Interactable3D.gd" type="Script" id=1]
+[ext_resource path="res://scripts3d/ExitArea3D.gd" type="Script" id=2]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_02.glb" type="PackedScene" id=3]
+[ext_resource path="res://art3d/classic64_pack/Industrial/yellow_post.glb" type="PackedScene" id=4]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_01.glb" type="PackedScene" id=5]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_04.glb" type="PackedScene" id=6]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_03.glb" type="PackedScene" id=7]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_05.glb" type="PackedScene" id=8]
+[ext_resource path="res://art3d/classic64_pack/Nature/tree_trunk.glb" type="PackedScene" id=9]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_1.glb" type="PackedScene" id=10]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_2.glb" type="PackedScene" id=11]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_3.glb" type="PackedScene" id=12]
+[ext_resource path="res://art3d/retro_tree_pack/tree_rt_2.glb" type="PackedScene" id=13]
+[ext_resource path="res://art3d/retro_tree_pack/tree_rt_3.glb" type="PackedScene" id=14]
+[ext_resource path="res://art3d/retro_tree_pack/small_tree_rt_1.glb" type="PackedScene" id=15]
+[ext_resource path="res://art3d/retro_tree_pack/dead_tree_rt_1.glb" type="PackedScene" id=16]
+[ext_resource path="res://art3d/retro_tree_pack/dead_tree_rt_2.glb" type="PackedScene" id=17]
+[ext_resource path="res://art3d/retro_tree_pack/tree_rt_4.glb" type="PackedScene" id=18]
+
+[ext_resource path="res://scripts3d/ForestDressing.gd" type="Script" id=19]
+
+[ext_resource path="res://scripts3d/RoomSetDressing.gd" type="Script" id=22]
+[ext_resource path="res://scenes3d/ChildShoe.tscn" type="PackedScene" id=23]
+[ext_resource path="res://art3d/classic64_pack/Ground/Materials/dirt_02.png" type="Texture2D" id=24]
+
+[sub_resource type="StandardMaterial3D" id=21]
+albedo_color = Color( 0.32, 0.28, 0.24, 1 )
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id=25]
+albedo_texture = ExtResource( 24 )
+roughness = 0.95
+uv1_scale = Vector2( 8.0, 8.0 )
+
+[sub_resource type="BoxShape3D" id=1]
+size = Vector3( 1.1, 0.72, 1.1 )
+
+[sub_resource type="BoxShape3D" id=2]
+size = Vector3( 2.2, 2.4, 2.2 )
+
+[sub_resource type="BoxShape3D" id=3]
+size = Vector3( 26.6, 6, 1 )
+
+[sub_resource type="BoxShape3D" id=4]
+size = Vector3( 26.6, 6, 1 )
+
+[sub_resource type="BoxShape3D" id=5]
+size = Vector3( 1, 6, 16.1 )
+
+[sub_resource type="BoxShape3D" id=6]
+size = Vector3( 1, 6, 16.1 )
+
+[sub_resource type="BoxShape3D" id=7]
+size = Vector3( 0.204, 1.464, 0.204 )
+
+[sub_resource type="BoxShape3D" id=8]
+size = Vector3( 0.204, 1.464, 0.204 )
+
+[sub_resource type="BoxShape3D" id=9]
+size = Vector3( 1.94, 0.906, 1.51 )
+
+[sub_resource type="BoxShape3D" id=10]
+size = Vector3( 1.382, 0.646, 1.074 )
+
+[sub_resource type="BoxShape3D" id=11]
+size = Vector3( 1.532, 0.716, 1.192 )
+
+[sub_resource type="BoxShape3D" id=12]
+size = Vector3( 1.584, 0.74, 1.232 )
+
+[sub_resource type="BoxShape3D" id=13]
+size = Vector3( 1.5, 0.7, 1.168 )
+
+[sub_resource type="BoxShape3D" id=14]
+size = Vector3( 2.082, 0.972, 1.62 )
+
+[sub_resource type="BoxShape3D" id=15]
+size = Vector3( 1.762, 0.824, 1.372 )
+
+[sub_resource type="BoxShape3D" id=16]
+size = Vector3( 1.794, 0.838, 1.396 )
+
+[sub_resource type="BoxShape3D" id=17]
+size = Vector3( 1.688, 0.788, 1.312 )
+
+[sub_resource type="StandardMaterial3D" id=18]
+albedo_color = Color( 0.130, 0.170, 0.110, 1 )
+
+[sub_resource type="StandardMaterial3D" id=19]
+albedo_color = Color( 0.95, 0.75, 0.30, 1 )
+emission_enabled = true
+emission = Color( 0.95, 0.65, 0.15, 1 )
+emission_energy_multiplier = 1.2
+
+[sub_resource type="Environment" id=20]
+background_mode = 1
+background_color = Color( 0.08, 0.10, 0.15, 1 )
+ambient_light_color = Color( 0.22, 0.25, 0.35, 1 )
+ambient_light_source = 2
+ambient_light_energy = 0.45
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color( 0.35, 0.32, 0.28, 1 )
+fog_depth_begin = 2.0
+fog_depth_end = 18.0
+fog_depth_curve = 1.2
+
+[node name="Room_bosque" type="Node3D"]
+
+[node name="AmbientacionExtra" type="Node3D" parent="."]
+script = ExtResource( 22 )
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.0, 0.000 )
+size = Vector3( 24.6, 0.3, 14.1 )
+use_collision = true
+material = SubResource( 25 )
+
+[node name="FillLight" type="OmniLight3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+light_color = Color( 0.45, 0.35, 0.55, 1 )
+light_energy = 0.35
+omni_range = 18.0
+
+[node name="Spawn" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.800, 0.000, -2.800 )
+
+[node name="SpawnDesdeCampo" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.1, 4.4 )
+
+[node name="SpawnDesdeBosque" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53, 0.1, 4.44 )
+
+[node name="Clue_zapato_hijo" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500, 0.020, 1.050 )
+script = ExtResource( 1 )
+clue_id = "zapato_hijo"
+display_name = "Zapato pequeño entre las hojas"
+is_item = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clue_zapato_hijo"]
+position = Vector3( 0, 0.34, 0 )
+shape = SubResource( 1 )
+
+[node name="ZapatoInfantil" parent="Clue_zapato_hijo" instance=ExtResource( 23 )]
+transform = Transform3D( 0.92, 0, 0.39, 0, 1, 0, -0.39, 0, 0.92, 0, 0, 0 )
+
+[node name="Exit_to_laberinto_0" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.531, 1.200, 4.440 )
+script = ExtResource( 2 )
+target_zone = "laberinto"
+spawn_marker = "SpawnDesdeBosque"
+requires_item = ""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit_to_laberinto_0"]
+shape = SubResource( 2 )
+
+[node name="FarGround" type="CSGBox3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0, 0 )
+size = Vector3( 260, 0.25, 260 )
+material = SubResource( 25 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 20 )
+
+[node name="Dressing" type="Node3D" parent="."]
+script = ExtResource( 19 )
+
+[node name="Bound_N" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 0.0000, 0.0000, -7.5500 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_N"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 3 )
+
+[node name="Bound_S" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 0.0000, 0.0000, 7.5500 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_S"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 4 )
+
+[node name="Bound_W" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, -12.8000, 0.0000, 0.0000 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_W"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 5 )
+
+[node name="Bound_E" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 12.8000, 0.0000, 0.0000 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_E"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 6 )
+
+
+
+

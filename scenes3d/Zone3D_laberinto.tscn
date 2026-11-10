@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts3d/Zone3D.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes3d/Room_laberinto.tscn" id="2"]
+
+[node name="Zone3D_laberinto" type="Node3D"]
+script = ExtResource("1")
+zone_id = "laberinto"
+spawn_point_path = NodePath("Room_laberinto/SpawnDesdeBosque")
+room_scene = ExtResource("2")

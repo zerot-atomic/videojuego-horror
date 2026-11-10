@@ -1,0 +1,26 @@
+LO-FI DREAD Free PSX Horror Sampler - Licence (LO-FI DREAD Asset Licence v1.0)
+Copyright (c) 2026 chuckyassets (https://chuckyassets.itch.io)
+
+YOU MAY
+- use the assets in unlimited commercial and non-commercial projects: games, prototypes, game jams, apps, videos, films,
+  streams, renders and marketing for those projects;
+- modify, recolour, cut up, combine and re-export the assets inside your projects;
+- ship the assets as part of a compiled / packaged product (including Steam, consoles, mobile, itch.io, web).
+- Credit is NOT required (appreciated though: "LO-FI DREAD by chuckyassets").
+- The licence is perpetual, worldwide and royalty-free, and it cannot be revoked for the version you obtained.
+- This free download covers you or your studio/team working on the same projects.
+
+YOU MAY NOT
+- resell, share or redistribute the assets (original or modified) as standalone files, asset packs, templates,
+  marketplace items or free downloads;
+- put the assets into datasets used to train or fine-tune AI / machine-learning models;
+- claim that you created the original assets.
+
+HOW IT WAS MADE
+Every texture, model, sound and image in this pack was generated procedurally by original code (written
+with AI assistance). No photos, scans, generative image/audio models or third-party assets were used.
+
+NO AFFILIATION
+Any game titles mentioned on the store page describe a visual style only. LO-FI DREAD is not affiliated with,
+endorsed by or derived from those games or their owners. All signs and labels are generic, not real brands.
+The assets are provided "as is", without warranty of any kind.

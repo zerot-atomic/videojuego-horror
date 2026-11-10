@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="LA COSECHA"
+run/main_scene="res://scenes3d/MainMenu3D.tscn"
+config/features=PackedStringArray("4.7")
+config/icon="res://Emblema cósmico del grimorio fracturado.png"
+config/version="0.2.13-beta"
+
+[autoload]
+
+GameManager="*res://autoload/GameManager.gd"
+InputProfiles="*res://autoload/InputProfiles.gd"
+MusicManager="*res://autoload/MusicManager.gd"
+ScreenDoorTransition="*res://autoload/ScreenDoorTransition.gd"
+
+[display]
+
+window/size/viewport_width=1672
+window/size/viewport_height=941
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_environment="res://default_env.tres"
+vram_compression/import_etc=true

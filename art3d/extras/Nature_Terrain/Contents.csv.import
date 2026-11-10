@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://du5tmwm3arqgf"
+
+[deps]
+
+files=["res://art3d/extras/Nature_Terrain/Contents.group.translation", "res://art3d/extras/Nature_Terrain/Contents.edition.translation", "res://art3d/extras/Nature_Terrain/Contents.width.translation", "res://art3d/extras/Nature_Terrain/Contents.depth.translation", "res://art3d/extras/Nature_Terrain/Contents.height.translation", "res://art3d/extras/Nature_Terrain/Contents.triangles.translation"]
+
+source_file="res://art3d/extras/Nature_Terrain/Contents.csv"
+dest_files=["res://art3d/extras/Nature_Terrain/Contents.group.translation", "res://art3d/extras/Nature_Terrain/Contents.edition.translation", "res://art3d/extras/Nature_Terrain/Contents.width.translation", "res://art3d/extras/Nature_Terrain/Contents.depth.translation", "res://art3d/extras/Nature_Terrain/Contents.height.translation", "res://art3d/extras/Nature_Terrain/Contents.triangles.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

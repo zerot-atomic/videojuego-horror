@@ -1,0 +1,13 @@
+.godot/
+Godot*.exe
+*.log
+*.tscn.bak
+*.csproj
+*.sln
+*.user
+.DS_Store
+Thumbs.db
+build/
+dist/
+bin/
+obj/NUL

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8tqodk0lq35a"
+path="res://.godot/imported/SuspiciousCar.obj-84e187141628fe396ba17dbd6c244928.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SuspiciousCar.obj-84e187141628fe396ba17dbd6c244928.mesh"]
+
+source_file="res://art3d/props_extra/car/SuspiciousCar.obj"
+dest_files=["res://.godot/imported/SuspiciousCar.obj-84e187141628fe396ba17dbd6c244928.mesh", "res://.godot/imported/SuspiciousCar.obj-84e187141628fe396ba17dbd6c244928.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

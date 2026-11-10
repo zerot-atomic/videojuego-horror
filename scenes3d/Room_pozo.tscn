@@ -1,0 +1,687 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://scripts3d/Interactable3D.gd" type="Script" id=1]
+[ext_resource path="res://scripts3d/ExitArea3D.gd" type="Script" id=2]
+[ext_resource path="res://art3d/classic64_pack/Industrial/manhole_cover.glb" type="PackedScene" id=3]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_1.glb" type="PackedScene" id=4]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_2.glb" type="PackedScene" id=5]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_3.glb" type="PackedScene" id=6]
+[ext_resource path="res://art3d/classic64_pack/Rocks/rock_handpainted_5.glb" type="PackedScene" id=7]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_05.glb" type="PackedScene" id=8]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_01.glb" type="PackedScene" id=9]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_02.glb" type="PackedScene" id=10]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_03.glb" type="PackedScene" id=11]
+[ext_resource path="res://art3d/classic64_pack/Nature/bush_04.glb" type="PackedScene" id=12]
+[ext_resource path="res://art3d/classic64_pack/Nature/tree_trunk.glb" type="PackedScene" id=13]
+[ext_resource path="res://art3d/psx_house_pack/props/bucket.glb" type="PackedScene" id=14]
+[ext_resource path="res://art3d/retro_tree_pack/dead_tree_rt_2.glb" type="PackedScene" id=15]
+[ext_resource path="res://art3d/retro_tree_pack/small_tree_rt_1.glb" type="PackedScene" id=16]
+[ext_resource path="res://art3d/psx_house_pack/props/ladder.glb" type="PackedScene" id=17]
+
+[ext_resource path="res://scripts3d/RoomSetDressing.gd" type="Script" id=24]
+[ext_resource path="res://art3d/classic64_pack/Ground/Materials/dirt_02.png" type="Texture2D" id=25]
+
+[sub_resource type="BoxShape3D" id=1]
+size = Vector3( 1.8, 1.8, 1.8 )
+
+[sub_resource type="BoxShape3D" id=2]
+size = Vector3( 2.2, 2.4, 2.2 )
+
+[sub_resource type="BoxShape3D" id=3]
+size = Vector3( 26.6, 6, 1 )
+
+[sub_resource type="BoxShape3D" id=4]
+size = Vector3( 26.6, 6, 1 )
+
+[sub_resource type="BoxShape3D" id=5]
+size = Vector3( 1, 6, 16.1 )
+
+[sub_resource type="BoxShape3D" id=6]
+size = Vector3( 1, 6, 16.1 )
+
+[sub_resource type="BoxShape3D" id=7]
+size = Vector3( 1.63, 0.944, 1.652 )
+
+[sub_resource type="BoxShape3D" id=8]
+size = Vector3( 1.288, 1.964, 0.81 )
+
+[sub_resource type="BoxShape3D" id=9]
+size = Vector3( 1.796, 0.816, 1.882 )
+
+[sub_resource type="BoxShape3D" id=10]
+size = Vector3( 1.666, 1.056, 1.654 )
+
+[sub_resource type="BoxShape3D" id=11]
+size = Vector3( 1.63, 0.944, 1.652 )
+
+[sub_resource type="BoxShape3D" id=12]
+size = Vector3( 1.288, 1.964, 0.81 )
+
+[sub_resource type="BoxShape3D" id=13]
+size = Vector3( 1.796, 0.816, 1.882 )
+
+[sub_resource type="BoxShape3D" id=14]
+size = Vector3( 1.666, 1.056, 1.654 )
+
+[sub_resource type="BoxShape3D" id=15]
+size = Vector3( 1.63, 0.944, 1.652 )
+
+[sub_resource type="BoxShape3D" id=16]
+size = Vector3( 1.884, 1.194, 1.87 )
+
+[sub_resource type="BoxShape3D" id=17]
+size = Vector3( 2.34, 1.062, 2.45 )
+
+[sub_resource type="BoxShape3D" id=18]
+size = Vector3( 1.962, 1.136, 1.988 )
+
+[sub_resource type="BoxShape3D" id=19]
+size = Vector3( 1.866, 0.848, 1.954 )
+
+[sub_resource type="BoxShape3D" id=20]
+size = Vector3( 1.856, 1.174, 1.842 )
+
+[sub_resource type="StandardMaterial3D" id=21]
+albedo_color = Color( 0.190, 0.190, 0.210, 1 )
+
+[sub_resource type="StandardMaterial3D" id=22]
+albedo_texture = ExtResource( 25 )
+roughness = 0.95
+uv1_scale = Vector2( 8.0, 8.0 )
+
+[sub_resource type="StandardMaterial3D" id=23]
+albedo_color = Color( 0.95, 0.75, 0.30, 1 )
+emission_enabled = true
+emission = Color( 0.95, 0.65, 0.15, 1 )
+emission_energy_multiplier = 1.2
+
+[sub_resource type="Environment" id=23]
+background_mode = 1
+background_color = Color( 0.01, 0.005, 0.015, 1 )
+ambient_light_color = Color( 0.18, 0.08, 0.22, 1 )
+ambient_light_source = 2
+ambient_light_energy = 0.18
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color( 0.08, 0.04, 0.12, 1 )
+fog_depth_begin = 3.0
+fog_depth_end = 20.0
+fog_depth_curve = 1.2
+
+[node name="Room_pozo" type="Node3D"]
+
+[node name="AmbientacionExtra" type="Node3D" parent="."]
+script = ExtResource( 24 )
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.0, 0.000 )
+size = Vector3( 24.6, 0.3, 14.1 )
+use_collision = true
+material = SubResource( 22 )
+
+[node name="FillLight" type="OmniLight3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+light_color = Color( 0.55, 0.15, 0.75, 1 )
+light_energy = 0.22
+omni_range = 10.0
+
+[node name="Spawn" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.000, 3.900 )
+
+[node name="SpawnDesdeCampo" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.1, 8.0 )
+
+[node name="Clue_descender" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.000, 0.136 )
+script = ExtResource( 1 )
+clue_id = "descender"
+display_name = "Descender al pozo"
+is_item = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clue_descender"]
+shape = SubResource( 1 )
+
+[node name="Descender_Prop" parent="Clue_descender" instance=ExtResource( 14 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0000, 0 )
+
+[node name="Clue_retirarse" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.000, 6.162 )
+script = ExtResource( 1 )
+clue_id = "retirarse"
+display_name = "Retirarse"
+is_item = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clue_retirarse"]
+shape = SubResource( 1 )
+
+[node name="Retirarse_Prop" parent="Clue_retirarse" instance=ExtResource( 17 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0000, 0 )
+
+[node name="Exit_to_campo_cultivo_0" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.200, 8.000 )
+script = ExtResource( 2 )
+target_zone = "campo_cultivo"
+spawn_marker = "SpawnDesdePozo"
+requires_item = ""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit_to_campo_cultivo_0"]
+shape = SubResource( 2 )
+
+[node name="FarGround" type="CSGBox3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0, 0 )
+size = Vector3( 260, 0.25, 260 )
+material = SubResource( 22 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 23 )
+
+[node name="Dressing" type="Node3D" parent="."]
+
+[node name="Bound_N" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 0.0000, 0.0000, -7.5500 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_N"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 3 )
+
+[node name="Bound_S" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 0.0000, 0.0000, 7.5500 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_S"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 4 )
+
+[node name="Bound_W" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, -12.8000, 0.0000, 0.0000 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_W"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 5 )
+
+[node name="Bound_E" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 12.8000, 0.0000, 0.0000 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/Bound_E"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.000, 0.000 )
+shape = SubResource( 6 )
+
+[node name="manhole_1" parent="Dressing" instance=ExtResource( 3 )]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 0.0000, 0.0418, 0.1360 )
+
+[node name="rock1_2" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 2.5754, 0.4717, 1.3353 )
+
+[node name="rock1_2_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 1.0000, 0.0000, 0.0000, 0.0000, 1.0000, 0.0000, -0.0000, 0.0000, 1.0000, 2.5754, 0.0000, 1.3353 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock1_2_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038, 0.472, -0.016 )
+shape = SubResource( 7 )
+
+[node name="rock2_3" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 0.6018, 0.0000, 0.7986, 0.0000, 1.0000, 0.0000, -0.7986, 0.0000, 0.6018, 2.7480, 0.9930, -0.0563 )
+
+[node name="rock2_3_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.6018, 0.0000, 0.7986, 0.0000, 1.0000, 0.0000, -0.7986, 0.0000, 0.6018, 2.7480, 0.0000, -0.0563 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock2_3_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020, 0.982, 0.042 )
+shape = SubResource( 8 )
+
+[node name="rock3_4" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -0.2756, 0.0000, 0.9613, 0.0000, 1.0000, 0.0000, -0.9613, 0.0000, -0.2756, 2.3666, 0.3583, -1.3800 )
+
+[node name="rock3_4_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.2756, 0.0000, 0.9613, 0.0000, 1.0000, 0.0000, -0.9613, 0.0000, -0.2756, 2.3666, 0.0000, -1.3800 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock3_4_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.408, -0.008 )
+shape = SubResource( 9 )
+
+[node name="rock5_5" parent="Dressing" instance=ExtResource( 7 )]
+transform = Transform3D( -0.9336, 0.0000, 0.3584, 0.0000, 1.0000, 0.0000, -0.3584, 0.0000, -0.9336, 1.3506, 0.5265, -2.3503 )
+
+[node name="rock5_5_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.9336, 0.0000, 0.3584, 0.0000, 1.0000, 0.0000, -0.3584, 0.0000, -0.9336, 1.3506, 0.0000, -2.3503 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock5_5_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008, 0.528, -0.031 )
+shape = SubResource( 10 )
+
+[node name="rock1_6" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -0.8480, 0.0000, -0.5299, 0.0000, 1.0000, 0.0000, 0.5299, 0.0000, -0.8480, -0.0405, 0.4717, -2.6575 )
+
+[node name="rock1_6_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.8480, 0.0000, -0.5299, 0.0000, 1.0000, 0.0000, 0.5299, 0.0000, -0.8480, -0.0405, 0.0000, -2.6575 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock1_6_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038, 0.472, -0.016 )
+shape = SubResource( 11 )
+
+[node name="rock2_7" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( -0.0872, 0.0000, -0.9962, 0.0000, 1.0000, 0.0000, 0.9962, 0.0000, -0.0872, -1.3029, 0.9930, -2.3354 )
+
+[node name="rock2_7_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.0872, 0.0000, -0.9962, 0.0000, 1.0000, 0.0000, 0.9962, 0.0000, -0.0872, -1.3029, 0.0000, -2.3354 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock2_7_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020, 0.982, 0.042 )
+shape = SubResource( 12 )
+
+[node name="rock3_8" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 0.7431, 0.0000, -0.6691, 0.0000, 1.0000, 0.0000, 0.6691, 0.0000, 0.7431, -2.3597, 0.3583, -1.3560 )
+
+[node name="rock3_8_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.7431, 0.0000, -0.6691, 0.0000, 1.0000, 0.0000, 0.6691, 0.0000, 0.7431, -2.3597, 0.0000, -1.3560 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock3_8_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.408, -0.008 )
+shape = SubResource( 13 )
+
+[node name="rock5_9" parent="Dressing" instance=ExtResource( 7 )]
+transform = Transform3D( 0.9816, 0.0000, 0.1908, 0.0000, 1.0000, 0.0000, -0.1908, 0.0000, 0.9816, -2.7806, 0.5265, -0.0184 )
+
+[node name="rock5_9_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.9816, 0.0000, 0.1908, 0.0000, 1.0000, 0.0000, -0.1908, 0.0000, 0.9816, -2.7806, 0.0000, -0.0184 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock5_9_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008, 0.528, -0.031 )
+shape = SubResource( 14 )
+
+[node name="rock1_10" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 0.4384, 0.0000, 0.8988, 0.0000, 1.0000, 0.0000, -0.8988, 0.0000, 0.4384, -2.5068, 0.4717, 1.2924 )
+
+[node name="rock1_10_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.4384, 0.0000, 0.8988, 0.0000, 1.0000, 0.0000, -0.8988, 0.0000, 0.4384, -2.5068, 0.0000, 1.2924 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock1_10_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038, 0.472, -0.016 )
+shape = SubResource( 15 )
+
+[node name="bush5_11" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.7853, 0.0000, -0.2706, 0.0000, 1.8057, 0.0000, 0.2706, 0.0000, -1.7853, -11.7598, 0.1374, -6.5852 )
+
+[node name="bush1_12" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 0.5533, 0.0000, -1.6637, 0.0000, 1.7533, 0.0000, 1.6637, 0.0000, 0.5533, -11.8308, 0.3278, 6.4455 )
+
+[node name="bush2_13" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( 0.6508, 0.0000, -1.7578, 0.0000, 1.8744, 0.0000, 1.7578, 0.0000, 0.6508, -9.2517, 0.3125, -6.2499 )
+
+[node name="bush1_14" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -0.4631, 0.0000, 1.4139, 0.0000, 1.4878, 0.0000, -1.4139, 0.0000, -0.4631, -9.4579, 0.2782, 6.5488 )
+
+[node name="bush1_15" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 1.3253, 0.0000, -0.0396, 0.0000, 1.3259, 0.0000, 0.0396, 0.0000, 1.3253, -7.0256, 0.2479, -6.5021 )
+
+[node name="bush2_16" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( 1.1234, 0.0000, -1.0638, 0.0000, 1.5471, 0.0000, 1.0638, 0.0000, 1.1234, -6.8476, 0.2579, 6.4879 )
+
+[node name="bush5_17" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 0.9647, 0.0000, -1.2812, 0.0000, 1.6038, 0.0000, 1.2812, 0.0000, 0.9647, -4.4818, 0.1220, -6.1994 )
+
+[node name="bush3_18" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -0.0696, 0.0000, 1.8979, 0.0000, 1.8991, 0.0000, -1.8979, 0.0000, -0.0696, -4.5162, 0.0886, 6.2808 )
+
+[node name="bush5_19" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.1366, 0.0000, 1.1125, 0.0000, 1.5905, 0.0000, -1.1125, 0.0000, -1.1366, -2.3809, 0.1210, -6.2046 )
+
+[node name="bush4_20" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -1.3830, 0.0000, 1.2076, 0.0000, 1.8360, 0.0000, -1.2076, 0.0000, -1.3830, -2.2071, 0.2584, 6.5220 )
+
+[node name="bush1_21" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 0.4673, 0.0000, 1.7078, 0.0000, 1.7706, 0.0000, -1.7078, 0.0000, 0.4673, 0.0782, 0.3310, -6.5246 )
+
+[node name="bush2_22" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( 0.0372, 0.0000, -1.4184, 0.0000, 1.4188, 0.0000, 1.4184, 0.0000, 0.0372, 2.7042, 0.2365, -6.5461 )
+
+[node name="bush5_23" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -0.5707, 0.0000, -1.7041, 0.0000, 1.7972, 0.0000, 1.7041, 0.0000, -0.5707, 2.9645, 0.1368, 6.4469 )
+
+[node name="bush4_24" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -1.5131, 0.0000, -0.8928, 0.0000, 1.7569, 0.0000, 0.8928, 0.0000, -1.5131, 5.0698, 0.2473, -6.2456 )
+
+[node name="bush2_25" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -0.0481, 0.0000, -1.3833, 0.0000, 1.3842, 0.0000, 1.3833, 0.0000, -0.0481, 4.8730, 0.2307, 6.5749 )
+
+[node name="bush2_26" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -1.0065, 0.0000, 1.2560, 0.0000, 1.6095, 0.0000, -1.2560, 0.0000, -1.0065, 7.5171, 0.2683, -6.4232 )
+
+[node name="bush4_27" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( 1.4129, 0.0000, -1.2130, 0.0000, 1.8621, 0.0000, 1.2130, 0.0000, 1.4129, 7.2434, 0.2621, 6.2591 )
+
+[node name="bush5_28" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.7824, 0.0000, 0.0268, 0.0000, 1.7826, 0.0000, -0.0268, 0.0000, -1.7824, 10.0736, 0.1356, -6.1311 )
+
+[node name="bush2_29" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -0.0913, 0.0000, 1.5348, 0.0000, 1.5375, 0.0000, -1.5348, 0.0000, -0.0913, 9.8422, 0.2563, 6.0633 )
+
+[node name="bush5_30" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.2277, 0.0000, 1.0934, 0.0000, 1.6440, 0.0000, -1.0934, 0.0000, -1.2277, -11.8303, 0.1251, -5.0958 )
+
+[node name="bush1_31" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 0.6181, 0.0000, -1.2283, 0.0000, 1.3750, 0.0000, 1.2283, 0.0000, 0.6181, 11.5903, 0.2571, -4.8189 )
+
+[node name="bush5_32" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 1.2889, 0.0000, 0.8298, 0.0000, 1.5329, 0.0000, -0.8298, 0.0000, 1.2889, -11.7779, 0.1166, -2.5317 )
+
+[node name="bush1_33" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 1.4231, 0.0000, 1.2014, 0.0000, 1.8625, 0.0000, -1.2014, 0.0000, 1.4231, 11.3269, 0.3482, -2.5982 )
+
+[node name="bush3_34" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( 0.7727, 0.0000, 1.5968, 0.0000, 1.7739, 0.0000, -1.5968, 0.0000, 0.7727, -11.7535, 0.0827, 0.0499 )
+
+[node name="bush5_35" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 1.7270, 0.0000, 0.5116, 0.0000, 1.8012, 0.0000, -0.5116, 0.0000, 1.7270, 11.7472, 0.1371, -0.1152 )
+
+[node name="bush4_36" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -1.6142, 0.0000, -0.1483, 0.0000, 1.6210, 0.0000, 0.1483, 0.0000, -1.6142, -11.6539, 0.2281, 2.2484 )
+
+[node name="bush3_37" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( 1.0533, 0.0000, -1.0050, 0.0000, 1.4558, 0.0000, 1.0050, 0.0000, 1.0533, 11.6149, 0.0679, 2.2234 )
+
+[node name="bush5_38" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.3881, 0.0000, 0.0921, 0.0000, 1.3911, 0.0000, -0.0921, 0.0000, -1.3881, -11.5169, 0.1059, 4.5101 )
+
+[node name="bush2_39" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -1.5236, 0.0000, -0.9088, 0.0000, 1.7741, 0.0000, 0.9088, 0.0000, -1.5236, 11.3370, 0.2957, 4.5532 )
+
+[node name="rock5_40" parent="Dressing" instance=ExtResource( 7 )]
+transform = Transform3D( 1.1307, 0.0000, 0.0161, 0.0000, 1.1308, 0.0000, -0.0161, 0.0000, 1.1307, 7.1945, 0.5953, -3.5573 )
+
+[node name="rock5_40_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.9999, 0.0000, 0.0142, 0.0000, 1.0000, 0.0000, -0.0142, 0.0000, 0.9999, 7.1945, 0.0000, -3.5573 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock5_40_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009, 0.597, -0.035 )
+shape = SubResource( 16 )
+
+[node name="rock3_41" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -1.2122, 0.0000, -0.4765, 0.0000, 1.3025, 0.0000, 0.4765, 0.0000, -1.2122, -6.5281, 0.4666, 0.3441 )
+
+[node name="rock3_41_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.9307, 0.0000, -0.3658, 0.0000, 1.0000, 0.0000, 0.3658, 0.0000, -0.9307, -6.5281, 0.0000, 0.3441 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock3_41_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.531, -0.011 )
+shape = SubResource( 17 )
+
+[node name="rock1_42" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 1.2017, 0.0000, 0.0664, 0.0000, 1.2036, 0.0000, -0.0664, 0.0000, 1.2017, -9.4203, 0.5677, 3.3415 )
+
+[node name="rock1_42_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.9985, 0.0000, 0.0552, 0.0000, 1.0000, 0.0000, -0.0552, 0.0000, 0.9985, -9.4203, 0.0000, 3.3415 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock1_42_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.568, -0.019 )
+shape = SubResource( 18 )
+
+[node name="rock3_43" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 1.0309, 0.0000, 0.1291, 0.0000, 1.0389, 0.0000, -0.1291, 0.0000, 1.0309, -3.8762, 0.3722, -3.7204 )
+
+[node name="rock3_43_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( 0.9923, 0.0000, 0.1242, 0.0000, 1.0000, 0.0000, -0.1242, 0.0000, 0.9923, -3.8762, 0.0000, -3.7204 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock3_43_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.424, -0.008 )
+shape = SubResource( 19 )
+
+[node name="rock5_44" parent="Dressing" instance=ExtResource( 7 )]
+transform = Transform3D( -0.4605, 0.0000, -1.0139, 0.0000, 1.1136, 0.0000, 1.0139, 0.0000, -0.4605, 5.9728, 0.5863, 1.0903 )
+
+[node name="rock5_44_col" type="StaticBody3D" parent="Dressing"]
+transform = Transform3D( -0.4135, 0.0000, -0.9105, 0.0000, 1.0000, 0.0000, 0.9105, 0.0000, -0.4135, 5.9728, 0.0000, 1.0903 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dressing/rock5_44_col"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009, 0.587, -0.034 )
+shape = SubResource( 20 )
+
+[node name="rock1_45" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 2.9072, 0.0000, -1.2489, 0.0000, 3.1640, 0.0000, 1.2489, 0.0000, 2.9072, 7.8146, 1.4924, -23.7680 )
+
+[node name="bush2_46" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -2.7501, 0.0000, 1.8979, 0.0000, 3.3415, 0.0000, -1.8979, 0.0000, -2.7501, 11.8384, 0.5570, -39.3550 )
+
+[node name="trunk_47" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( 2.2339, 0.0000, 2.2584, 0.0000, 3.1766, 0.0000, -2.2584, 0.0000, 2.2339, 27.4338, 1.0122, 42.7471 )
+
+[node name="bush3_48" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -2.3108, 0.0000, 0.5469, 0.0000, 2.3746, 0.0000, -0.5469, 0.0000, -2.3108, -45.7268, 0.1107, 0.4419 )
+
+[node name="bush3_49" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -2.0449, 0.0000, -1.8775, 0.0000, 2.7761, 0.0000, 1.8775, 0.0000, -2.0449, -39.2880, 0.1295, -40.3944 )
+
+[node name="rock2_50" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 0.2510, 0.0000, 2.8935, 0.0000, 2.9043, 0.0000, -2.8935, 0.0000, 0.2510, 46.4916, 2.8839, 5.3591 )
+
+[node name="rock3_51" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -1.4570, 0.0000, 2.0767, 0.0000, 2.5369, 0.0000, -2.0767, 0.0000, -1.4570, 3.0106, 0.9089, -23.3794 )
+
+[node name="bush5_52" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 0.9985, 0.0000, -2.5730, 0.0000, 2.7600, 0.0000, 2.5730, 0.0000, 0.9985, 24.3154, 0.2100, 3.9119 )
+
+[node name="bush5_53" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 2.7980, 0.0000, -0.1866, 0.0000, 2.8042, 0.0000, 0.1866, 0.0000, 2.7980, -35.9883, 0.2134, 19.2672 )
+
+[node name="rock3_54" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -0.2033, 0.0000, 2.9835, 0.0000, 2.9905, 0.0000, -2.9835, 0.0000, -0.2033, 43.0443, 1.0714, -19.3569 )
+
+[node name="bush5_55" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -2.7921, 0.0000, -0.5177, 0.0000, 2.8397, 0.0000, 0.5177, 0.0000, -2.7921, 37.6779, 0.2161, 29.8171 )
+
+[node name="bush4_56" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( 2.5625, 0.0000, -1.4437, 0.0000, 2.9412, 0.0000, 1.4437, 0.0000, 2.5625, 29.6056, 0.4139, -19.3249 )
+
+[node name="bush4_57" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -2.3968, 0.0000, 2.0387, 0.0000, 3.1466, 0.0000, -2.0387, 0.0000, -2.3968, 8.4027, 0.4428, 35.9068 )
+
+[node name="rock1_58" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 2.0120, 0.0000, -0.6607, 0.0000, 2.1177, 0.0000, 0.6607, 0.0000, 2.0120, 31.0636, 0.9989, -41.5038 )
+
+[node name="bush5_59" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -1.4813, 0.0000, 2.8397, 0.0000, 3.2028, 0.0000, -2.8397, 0.0000, -1.4813, 22.5493, 0.2437, 41.6331 )
+
+[node name="rock2_60" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( -2.5856, 0.0000, -0.2879, 0.0000, 2.6016, 0.0000, 0.2879, 0.0000, -2.5856, -9.1863, 2.5833, -35.4267 )
+
+[node name="rock3_61" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 0.3709, 0.0000, 2.1762, 0.0000, 2.2076, 0.0000, -2.1762, 0.0000, 0.3709, -18.7731, 0.7909, 14.7045 )
+
+[node name="bush4_62" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( 0.2141, 0.0000, -3.5918, 0.0000, 3.5982, 0.0000, 3.5918, 0.0000, 0.2141, 20.8521, 0.5064, -27.5054 )
+
+[node name="bush2_63" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( 2.5724, 0.0000, -0.9278, 0.0000, 2.7346, 0.0000, 0.9278, 0.0000, 2.5724, -21.6720, 0.4559, 35.1535 )
+
+[node name="trunk_64" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -1.6308, 0.0000, -0.9925, 0.0000, 1.9091, 0.0000, 0.9925, 0.0000, -1.6308, 10.5921, 0.6083, 28.2146 )
+
+[node name="trunk_65" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -2.9998, 0.0000, -0.1707, 0.0000, 3.0047, 0.0000, 0.1707, 0.0000, -2.9998, -27.9712, 0.9574, -33.1322 )
+
+[node name="rock3_66" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 1.4613, 0.0000, 2.1596, 0.0000, 2.6076, 0.0000, -2.1596, 0.0000, 1.4613, -34.3772, 0.9342, 24.9634 )
+
+[node name="rock2_67" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 1.2529, 0.0000, 1.8951, 0.0000, 2.2719, 0.0000, -1.8951, 0.0000, 1.2529, -19.6319, 2.2559, 16.3565 )
+
+[node name="rock3_68" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 0.2468, 0.0000, 3.1522, 0.0000, 3.1619, 0.0000, -3.1522, 0.0000, 0.2468, -25.5637, 1.1328, 5.8346 )
+
+[node name="bush5_69" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 1.2924, 0.0000, 3.2270, 0.0000, 3.4761, 0.0000, -3.2270, 0.0000, 1.2924, -47.8145, 0.2645, 41.7880 )
+
+[node name="bush2_70" parent="Dressing" instance=ExtResource( 10 )]
+transform = Transform3D( -0.0617, 0.0000, -3.2761, 0.0000, 3.2767, 0.0000, 3.2761, 0.0000, -0.0617, 32.1339, 0.5462, -42.5820 )
+
+[node name="bush1_71" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -2.0383, 0.0000, 1.1057, 0.0000, 2.3189, 0.0000, -1.1057, 0.0000, -2.0383, 39.4733, 0.4336, 29.7516 )
+
+[node name="bush5_72" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -0.6657, 0.0000, 2.7424, 0.0000, 2.8221, 0.0000, -2.7424, 0.0000, -0.6657, 13.5465, 0.2147, -20.3801 )
+
+[node name="trunk_73" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -1.3348, 0.0000, 1.9241, 0.0000, 2.3418, 0.0000, -1.9241, 0.0000, -1.3348, 11.6233, 0.7462, -40.8002 )
+
+[node name="rock3_74" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -2.1952, 0.0000, 0.9116, 0.0000, 2.3770, 0.0000, -0.9116, 0.0000, -2.1952, 14.2487, 0.8516, 31.4260 )
+
+[node name="bush5_75" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 1.3560, 0.0000, 1.5837, 0.0000, 2.0849, 0.0000, -1.5837, 0.0000, 1.3560, -43.5621, 0.1587, -24.9897 )
+
+[node name="bush3_76" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -1.8839, 0.0000, -2.6400, 0.0000, 3.2432, 0.0000, 2.6400, 0.0000, -1.8839, -36.5133, 0.1512, 1.0693 )
+
+[node name="bush4_77" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -1.4099, 0.0000, 2.5818, 0.0000, 2.9416, 0.0000, -2.5818, 0.0000, -1.4099, -21.6203, 0.4140, 7.0866 )
+
+[node name="bush4_78" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -0.1945, 0.0000, 2.1072, 0.0000, 2.1161, 0.0000, -2.1072, 0.0000, -0.1945, 32.3278, 0.2978, 26.8514 )
+
+[node name="bush4_79" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -2.5901, 0.0000, 0.6717, 0.0000, 2.6758, 0.0000, -0.6717, 0.0000, -2.5901, -43.7890, 0.3766, 18.5264 )
+
+[node name="trunk_80" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -0.6451, 0.0000, -2.7913, 0.0000, 2.8649, 0.0000, 2.7913, 0.0000, -0.6451, -29.4637, 0.9128, 1.7717 )
+
+[node name="rock1_81" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -0.9340, 0.0000, -2.1733, 0.0000, 2.3655, 0.0000, 2.1733, 0.0000, -0.9340, -9.5224, 1.1157, 17.5573 )
+
+[node name="bush3_82" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( 1.9828, 0.0000, -0.5850, 0.0000, 2.0674, 0.0000, 0.5850, 0.0000, 1.9828, 15.3748, 0.0964, 3.5664 )
+
+[node name="bush4_83" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( 1.3316, 0.0000, -2.3238, 0.0000, 2.6783, 0.0000, 2.3238, 0.0000, 1.3316, -3.2917, 0.3769, -39.2680 )
+
+[node name="rock1_84" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -1.4585, 0.0000, -1.2629, 0.0000, 1.9293, 0.0000, 1.2629, 0.0000, -1.4585, 22.9934, 0.9100, 22.6424 )
+
+[node name="bush4_85" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -1.4727, 0.0000, 2.6341, 0.0000, 3.0178, 0.0000, -2.6341, 0.0000, -1.4727, -37.4204, 0.4247, -15.7584 )
+
+[node name="trunk_86" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -2.9424, 0.0000, 0.1115, 0.0000, 2.9445, 0.0000, -0.1115, 0.0000, -2.9424, 13.8050, 0.9382, 13.8057 )
+
+[node name="rock1_87" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 0.6306, 0.0000, -1.7855, 0.0000, 1.8936, 0.0000, 1.7855, 0.0000, 0.6306, -35.5930, 0.8932, -38.2197 )
+
+[node name="bush5_88" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 0.6611, 0.0000, -2.3325, 0.0000, 2.4244, 0.0000, 2.3325, 0.0000, 0.6611, 11.1011, 0.1845, -18.1006 )
+
+[node name="bush1_89" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 2.5604, 0.0000, 0.1343, 0.0000, 2.5639, 0.0000, -0.1343, 0.0000, 2.5604, -35.1726, 0.4794, 37.6918 )
+
+[node name="bush4_90" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -0.2417, 0.0000, 2.3189, 0.0000, 2.3315, 0.0000, -2.3189, 0.0000, -0.2417, 47.1043, 0.3281, -3.1861 )
+
+[node name="rock2_91" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( -1.1855, 0.0000, -2.9598, 0.0000, 3.1884, 0.0000, 2.9598, 0.0000, -1.1855, -38.5470, 3.1659, 15.8917 )
+
+[node name="bush3_92" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -2.9901, 0.0000, 0.5991, 0.0000, 3.0495, 0.0000, -0.5991, 0.0000, -2.9901, -9.0228, 0.1422, 22.2768 )
+
+[node name="rock2_93" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 2.1477, 0.0000, 2.1282, 0.0000, 3.0236, 0.0000, -2.1282, 0.0000, 2.1477, 27.8199, 3.0023, 26.3181 )
+
+[node name="trunk_94" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -1.2531, 0.0000, 2.2491, 0.0000, 2.5746, 0.0000, -2.2491, 0.0000, -1.2531, 37.7188, 0.8204, 16.6398 )
+
+[node name="rock1_95" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -1.8138, 0.0000, 1.4992, 0.0000, 2.3532, 0.0000, -1.4992, 0.0000, -1.8138, 43.8033, 1.1099, -34.7268 )
+
+[node name="rock1_96" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 3.1411, 0.0000, 0.4803, 0.0000, 3.1776, 0.0000, -0.4803, 0.0000, 3.1411, 30.7327, 1.4988, -42.2205 )
+
+[node name="bush5_97" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( 1.6946, 0.0000, -1.3312, 0.0000, 2.1549, 0.0000, 1.3312, 0.0000, 1.6946, 38.3674, 0.1640, 28.8923 )
+
+[node name="rock3_98" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -1.3719, 0.0000, -2.5287, 0.0000, 2.8769, 0.0000, 2.5287, 0.0000, -1.3719, 9.9795, 1.0307, -29.6975 )
+
+[node name="bush1_99" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -0.6815, 0.0000, -2.4639, 0.0000, 2.5564, 0.0000, 2.4639, 0.0000, -0.6815, -6.2844, 0.4780, 38.9414 )
+
+[node name="rock3_100" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 2.0460, 0.0000, -1.1610, 0.0000, 2.3525, 0.0000, 1.1610, 0.0000, 2.0460, 3.9532, 0.8428, -24.0053 )
+
+[node name="bush3_101" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( 2.1897, 0.0000, -1.1549, 0.0000, 2.4756, 0.0000, 1.1549, 0.0000, 2.1897, 20.5293, 0.1154, 27.5614 )
+
+[node name="rock3_102" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( -2.1487, 0.0000, 1.3663, 0.0000, 2.5463, 0.0000, -1.3663, 0.0000, -2.1487, 0.4655, 0.9123, 27.0887 )
+
+[node name="rock2_103" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 2.8480, 0.0000, -0.4382, 0.0000, 2.8815, 0.0000, 0.4382, 0.0000, 2.8480, 23.7584, 2.8612, -13.3959 )
+
+[node name="rock1_104" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( 1.7017, 0.0000, -2.5884, 0.0000, 3.0977, 0.0000, 2.5884, 0.0000, 1.7017, 2.8927, 1.4611, -38.1255 )
+
+[node name="bush3_105" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -0.9770, 0.0000, -2.2357, 0.0000, 2.4399, 0.0000, 2.2357, 0.0000, -0.9770, -26.3075, 0.1138, -15.2144 )
+
+[node name="rock1_106" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -1.7413, 0.0000, -1.5569, 0.0000, 2.3358, 0.0000, 1.5569, 0.0000, -1.7413, 19.5954, 1.1017, 6.5531 )
+
+[node name="bush5_107" parent="Dressing" instance=ExtResource( 8 )]
+transform = Transform3D( -2.1069, 0.0000, 1.0283, 0.0000, 2.3445, 0.0000, -1.0283, 0.0000, -2.1069, 25.6581, 0.1784, -16.2457 )
+
+[node name="bush3_108" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( 2.1791, 0.0000, -1.7370, 0.0000, 2.7867, 0.0000, 1.7370, 0.0000, 2.1791, 11.8615, 0.1299, -27.2657 )
+
+[node name="rock1_109" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -1.0021, 0.0000, -2.0758, 0.0000, 2.3051, 0.0000, 2.0758, 0.0000, -1.0021, -19.2068, 1.0872, 25.4497 )
+
+[node name="bush3_110" parent="Dressing" instance=ExtResource( 11 )]
+transform = Transform3D( -3.0593, 0.0000, -0.2350, 0.0000, 3.0683, 0.0000, 0.2350, 0.0000, -3.0593, -46.6339, 0.1431, 18.5996 )
+
+[node name="rock2_111" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( 1.9115, 0.0000, -1.4684, 0.0000, 2.4103, 0.0000, 1.4684, 0.0000, 1.9115, -42.9076, 2.3934, 16.9841 )
+
+[node name="rock2_112" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( -1.1532, 0.0000, 1.7684, 0.0000, 2.1112, 0.0000, -1.7684, 0.0000, -1.1532, 37.5159, 2.0963, -22.4057 )
+
+[node name="bush1_113" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( 2.2118, 0.0000, 0.1668, 0.0000, 2.2180, 0.0000, -0.1668, 0.0000, 2.2118, -0.0135, 0.4147, 28.3698 )
+
+[node name="bush4_114" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( -3.0633, 0.0000, -1.4775, 0.0000, 3.4010, 0.0000, 1.4775, 0.0000, -3.0633, 42.7269, 0.4786, 8.0245 )
+
+[node name="bush1_115" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -1.4033, 0.0000, -2.7970, 0.0000, 3.1293, 0.0000, 2.7970, 0.0000, -1.4033, -27.5413, 0.5851, 9.7294 )
+
+[node name="bush1_116" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -1.1942, 0.0000, 1.6618, 0.0000, 2.0464, 0.0000, -1.6618, 0.0000, -1.1942, 6.8718, 0.3826, -12.0630 )
+
+[node name="trunk_117" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -1.7893, 0.0000, -0.9000, 0.0000, 2.0029, 0.0000, 0.9000, 0.0000, -1.7893, 48.0670, 0.6382, -38.5287 )
+
+[node name="rock1_118" parent="Dressing" instance=ExtResource( 4 )]
+transform = Transform3D( -1.7135, 0.0000, 1.0730, 0.0000, 2.0217, 0.0000, -1.0730, 0.0000, -1.7135, -14.4880, 0.9536, -17.3772 )
+
+[node name="rock2_119" parent="Dressing" instance=ExtResource( 5 )]
+transform = Transform3D( -0.1769, 0.0000, 1.8398, 0.0000, 1.8482, 0.0000, -1.8398, 0.0000, -0.1769, 17.4736, 1.8352, -11.1271 )
+
+[node name="trunk_120" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( -1.3103, 0.0000, 2.1534, 0.0000, 2.5207, 0.0000, -2.1534, 0.0000, -1.3103, 42.5144, 0.8032, -15.2793 )
+
+[node name="trunk_121" parent="Dressing" instance=ExtResource( 13 )]
+transform = Transform3D( 2.9703, 0.0000, 0.1240, 0.0000, 2.9729, 0.0000, -0.1240, 0.0000, 2.9703, -27.9878, 0.9472, 19.8528 )
+
+[node name="bush1_122" parent="Dressing" instance=ExtResource( 9 )]
+transform = Transform3D( -2.3591, 0.0000, 1.9431, 0.0000, 3.0563, 0.0000, -1.9431, 0.0000, -2.3591, -4.3427, 0.5714, -15.4446 )
+
+[node name="rock3_123" parent="Dressing" instance=ExtResource( 6 )]
+transform = Transform3D( 0.0425, 0.0000, -2.1603, 0.0000, 2.1607, 0.0000, 2.1603, 0.0000, 0.0425, 12.5846, 0.7741, -36.1910 )
+
+[node name="bush4_124" parent="Dressing" instance=ExtResource( 12 )]
+transform = Transform3D( 1.4933, 0.0000, -1.3914, 0.0000, 2.0411, 0.0000, 1.3914, 0.0000, 1.4933, 47.8370, 0.2873, 24.0570 )
+
+[node name="Balde_Pozo" parent="Dressing" instance=ExtResource( 14 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.000, 0.000, 2.000 )
+
+[node name="DeadTree_Pozo_1" parent="Dressing" instance=ExtResource( 15 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.500, 0.907, 4.500 )
+
+[node name="SmallDeadTree_Pozo_1" parent="Dressing" instance=ExtResource( 16 )]
+transform = Transform3D( 0, 0, 1, 0, 1, 0, -1, 0, 0, -5.500, 0.289, 5.500 )
+
+

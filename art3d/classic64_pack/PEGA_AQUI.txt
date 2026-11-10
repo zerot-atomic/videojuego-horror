@@ -1,0 +1,13 @@
+Pega aquí el contenido del Classic 64 Asset Pack (recomendado: la versión
+0.6, es la más completa) directamente, sin la carpeta contenedora extra:
+
+  art3d/classic64_pack/Books/...
+  art3d/classic64_pack/Art/...
+  art3d/classic64_pack/... (lo que traiga el pack)
+
+IMPORTANTE: los archivos de este pack son .blend (Blender), y Godot 3.x
+NO puede importar .blend directamente (esa integración automática es de
+Godot 4 en adelante). Para poder usarlos aquí necesitas, por cada objeto
+que quieras meter al juego: abrirlo en Blender y exportarlo a .fbx o
+.glb, y pegar ESE archivo exportado en esta carpeta (puedes borrar
+después el .blend si quieres, Godot solo necesita el .fbx/.glb).

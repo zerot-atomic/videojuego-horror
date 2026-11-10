@@ -1,0 +1,154 @@
+PORTE A GODOT 4.7.2 — La Cosecha del Color
+==============================================
+
+Este paquete pasa tu proyecto (el original + todos los parches v6 a v13) de
+Godot 3 a Godot 4.7.2, con el renderizador "Compatibility" (el modo de Godot 4
+para tarjetas gráficas viejas).
+
+IMPORTANTE ANTES DE EMPEZAR — LA TARJETA GRÁFICA
+------------------------------------------------
+Godot 4 NO tiene el modo OpenGL 2 (GLES2) que usaba tu proyecto. Lo más
+parecido es "Compatibility", que pide OpenGL 3.3 o más. Yo no puedo saber si tu
+PC llega a eso. Compruébalo así, en una terminal de Lubuntu:
+
+    glxinfo | grep "OpenGL version"
+
+(si te dice que no existe el comando:  sudo apt install mesa-utils )
+
+  - Si el número es 3.3 o MÁS (por ejemplo 4.2): adelante, este porte debería
+    abrir.
+  - Si es MENOR que 3.3: NO migres. Godot 4 no va a abrir en tu PC. En ese caso
+    quédate con la versión de Godot 3.5.3 (tu proyecto con los parches v1 a
+    v13), que sí probé completa y funciona con OpenGL 2.
+
+Tú dijiste que te encargas de que funcione en tu máquina; esto es solo para que
+sepas qué número buscar.
+
+CÓMO USARLO (3 pasos)
+---------------------
+1) Descomprime este zip en una carpeta cualquiera.
+2) Abre una terminal en esa carpeta y corre:
+
+       bash migrar_a_godot4.sh /ruta/a/tu/proyecto
+
+   Ejemplo:  bash migrar_a_godot4.sh ~/Documentos/LaCosechaDelColor_Godot
+
+   El script te pide escribir SI antes de tocar nada. Hace esto, en orden:
+     a) COPIA DE RESPALDO completa de tu proyecto, en una carpeta hermana que
+        termina en _RESPALDO_godot3. Tu proyecto original queda intacto ahí.
+     b) Borra las importaciones viejas de Godot 3 (la carpeta .import y los
+        archivos *.import que acompañan a cada modelo, imagen y sonido). Godot 4
+        no puede usarlas y las genera de nuevo solo.
+     c) Copia encima los archivos ya portados (project.godot, autoload/,
+        scripts3d/, scenes3d/ y default_env.tres).
+   NO toca tus modelos, texturas ni audio (art3d/ y audio/ quedan igual).
+
+3) Abre el proyecto con Godot 4.7.2. La primera vez tarda varios minutos
+   reimportando los ~700 archivos; es normal, espera a que termine. Después
+   abre scenes3d/MainMenu3D.tscn y dale Play (F5).
+
+QUÉ HICE (TODO, EN ORDEN)
+-------------------------
+Armé el proyecto completo (original + parches v6 a v13), corrí el convertidor
+automático de Godot 4 sobre los 658 archivos, y después revisé a mano lo que el
+convertidor deja mal. Encontré y arreglé esto:
+
+  A. EL JUEGO NI ARRANCABA (2 archivos que no compilaban)
+     1. Guardado de partida y ajustes (GameManager.gd): usaba la clase File,
+        que en Godot 4 ya no existe. La reescribí con FileAccess.
+     2. Música (MusicManager.gd): el cambio suave entre pistas usaba un nodo
+        Tween, que en Godot 4 funciona totalmente distinto. Lo reescribí.
+     3. Jugador (Player3D.gd): declaraba su propia variable "velocity", pero
+        el cuerpo físico nuevo (CharacterBody3D) ya trae una. Era un error de
+        compilación: el jugador no habría existido. Quité la duplicada.
+
+  B. ERRORES QUE SOLO SALEN CUANDO EL JUEGO CORRE (no avisan antes)
+     4. Bucle de animaciones (Player3D.gd): la propiedad "loop" ya no existe,
+        ahora se llama "loop_mode". Sin esto, el inspector se habría quedado
+        congelado tras la primera animación (o dado error al arrancar).
+     5. Interfaz (HUD, menú principal, créditos, finales, visiones): cambiaron
+        de nombre la alineación de textos, el "rellenar pantalla", el ajuste
+        de línea de los textos largos y los márgenes del HUD. El convertidor
+        incluso renombró mal los márgenes del HUD. Todo corregido.
+     6. Créditos: el sistema de fuentes cambió por completo en Godot 4 (ya no
+        existe font_data, ni el tamaño ni el contorno dentro de la fuente).
+        Reescribí cómo se arma y se ajusta el texto de los créditos.
+
+  C. ERRORES SILENCIOSOS EN LAS ESCENAS (Godot los ignora sin avisar)
+     Esta parte la encontré preguntándole al propio Godot 4.7.2 qué
+     propiedades de tus escenas existen de verdad. Sin estos arreglos, el
+     juego habría abierto "bien" pero roto:
+     7. 36 bloques CSGBox (pisos, muros, escalones, la cabaña...): "ancho, alto,
+        fondo" ahora es un solo valor "size". Sin corregirlo, TODOS habrían
+        quedado como cubos de 1 metro: pisos de 1 m y el jugador cayendo al vacío.
+     8. 156 cajas de colisión: en Godot 3 se guardaba la MITAD del tamaño y en
+        Godot 4 se guarda el tamaño COMPLETO. Las convertí multiplicando por 2.
+        Sin esto, las paredes, límites del mapa y muebles tendrían colisiones
+        de 1 metro, sin relación con lo que se ve.
+     9. 9 materiales con brillo (ventana de la cabaña, marcadores): la
+        propiedad de intensidad cambió de nombre.
+    10. NIEBLA y luz ambiental, en las 8 salas: el convertidor no las tocó. Ahora:
+        el color de niebla tiene otro nombre; hay que elegir la niebla "por
+        distancia" (la tuya: begin/end, p. ej. 3 a 26 m en el camino de entrada);
+        y la luz ambiental necesita decir que su fuente es un color. Dejé tus
+        mismos valores.
+
+  D. CONFIGURACIÓN DEL PROYECTO
+    11. project.godot: el renderizador pasó de GLES2 a "gl_compatibility"; el modo
+        de escalado "2d" ahora se llama "canvas_items".
+    12. default_env.tres: tenía un cielo vacío que en Godot 4 no tiene sentido;
+        lo cambié por un fondo gris liso del color de la niebla.
+
+  E. LIMPIEZA
+    13. Quité mi reimplementación manual de lerp_angle (Player3D.gd y Wrapper3D.gd)
+        y uso la que ya trae el motor.
+    14. Escribí el script migrar_a_godot4.sh (con respaldo) y lo probé sobre una
+        copia de tu proyecto original: respalda, limpia, copia, y se niega a
+        correr por segunda vez.
+
+QUÉ COMPROBÉ (con Godot 4.7.2 real) Y QUÉ NO
+---------------------------------------------
+Comprobado:
+  - Los 17 scripts compilan sin errores, con GameManager y MusicManager
+    registrados como autoloads (como cuando el juego corre de verdad).
+  - Las 24 escenas cargan e instancian sin fallar.
+  - Todas las propiedades de todas las escenas existen en Godot 4.7.2 (las
+    únicas que no "existen" son las tuyas, como clue_id o zone_id, que viven en
+    tus scripts y son correctas).
+  - La niebla se lee de vuelta con los valores que debe (activa y por distancia
+    en los exteriores; sin niebla en el interior de la casa).
+  - El script de migración, probado en una copia.
+
+NO pude comprobar (y por eso necesito que lo veas tú):
+  - NO pude ver ninguna escena dibujada ni jugar. Mi entorno de pruebas no tiene
+    tarjeta gráfica real y no logró importar los modelos 3D (.glb); por eso no
+    pude ver cómo se ve ni cómo se siente nada.
+  - No lo probé en tu PC ni con tu tarjeta.
+  - El inspector con huesos de Mixamo: en Godot 3.5.3 sí lo comprobé (28 huesos
+    y las 3 animaciones). En Godot 4 es lo esperado, pero no lo vi.
+  - La niebla en el modo Compatibility: los valores están bien, pero si el modo
+    de tu tarjeta dibuja la niebla distinta, no lo sé.
+  - Las luces: Godot 4 calcula la intensidad de las luces distinto que Godot 3.
+    Es posible que las salas se vean más claras o más oscuras que antes.
+  - La física (que el jugador no atraviese paredes), la cámara, la persecución
+    del Wrapper, guardar/cargar partida y el menú de pausa: compilan, pero no
+    los jugué.
+
+QUÉ REVISAR PRIMERO (en este orden)
+-----------------------------------
+ 1. ¿Abre el menú principal? ¿Se ve el fondo y suena la música?
+ 2. Nueva partida: ¿aparece el piso? (si caes al vacío, avísame: es colisión)
+ 3. ¿Se ve el inspector, de pie, y se mueve con W/A/S/D?
+ 4. ¿Las paredes de la casa y de los exteriores te frenan?
+ 5. ¿Se ve la niebla gris en el camino de entrada y el bosque?
+ 6. ¿Se ven los modelos (árboles, muebles, auto, cabaña) y las luces?
+ 7. Esc (pausa), Tab (diario), E (examinar), guardar y cargar partida.
+ 8. scenes3d/WrapperTest3D.tscn (F6): la persecución.
+
+SI ALGO SALE MAL
+----------------
+ - Tu proyecto original está intacto en la carpeta ..._RESPALDO_godot3.
+ - Cópiame el texto rojo del panel "Depurador" o "Salida" de Godot, o dime qué
+   se ve raro y en qué sala, y lo corrijo.
+ - Avisos que NO son problema: mensajes sobre "mesh uses old surface format" o
+   sobre texturas, al reimportar por primera vez.
