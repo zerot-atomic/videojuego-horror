@@ -10,4 +10,4 @@ Thumbs.db
 build/
 dist/
 bin/
-obj/NUL
+obj/
