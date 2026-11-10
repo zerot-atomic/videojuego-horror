@@ -261,8 +261,8 @@ func _show_intro_tutorial() -> void:
 	var controls := Label.new()
 	controls.text = "WASD / stick izquierdo: moverte · E / A: interactuar · C / B: agacharse · Tab / Y: Diario · Shift / L-Stick: correr · Esc / Start: Pausa"
 	controls.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	controls.add_theme_color_override("font_color", Color(0.77, 0.67, 0.83, 0.9))
-	controls.add_theme_font_size_override("font_size", 13)
+	controls.add_theme_color_override("font_color", Color(0.92, 0.89, 0.94, 0.98))
+	controls.add_theme_font_size_override("font_size", 14)
 	content.add_child(controls)
 
 	var close := _make_intro_button("COMENZAR INVESTIGACIÓN")

@@ -1,6 +1,7 @@
 extends Node
 
 const BINDINGS_PATH := "user://input_bindings.cfg"
+const BINDINGS_VERSION := 2
 const ACTIONS := ["move_forward", "move_backward", "turn_left", "turn_right", "run", "crouch", "interact", "journal", "pause"]
 
 const DEFAULT_BINDINGS := {
@@ -18,8 +19,8 @@ const DEFAULT_BINDINGS := {
 const ACTION_LABELS := {
 	"move_forward": "Avanzar",
 	"move_backward": "Retroceder",
-	"turn_left": "Mover a la izquierda",
-	"turn_right": "Mover a la derecha",
+	"turn_left": "Girar a la izquierda",
+	"turn_right": "Girar a la derecha",
 	"run": "Correr",
 	"crouch": "Agacharse",
 	"interact": "Interactuar",
@@ -73,6 +74,13 @@ func _contains_event(action: String, candidate: InputEvent) -> bool:
 func _load_custom_bindings() -> void:
 	if _config.load(BINDINGS_PATH) != OK:
 		return
+	# Version migration: discard inverted bindings from v1
+	var saved_version := int(_config.get_value("meta", "version", 0))
+	if saved_version < BINDINGS_VERSION:
+		print("[InputProfiles] Bindings version %d < %d, discarding inverted user bindings" % [saved_version, BINDINGS_VERSION])
+		_config.clear()
+		_config.save(BINDINGS_PATH)
+		return
 	for action in ACTIONS:
 		var custom: Dictionary = _config.get_value("bindings", action, {})
 		if typeof(custom) != TYPE_DICTIONARY:
@@ -103,6 +111,7 @@ func rebind(action: String, incoming: InputEvent) -> bool:
 	custom[kind] = _data_from_event(event)
 	_custom_bindings[action] = custom
 	_config.set_value("bindings", action, custom)
+	_config.set_value("meta", "version", BINDINGS_VERSION)
 	_config.save(BINDINGS_PATH)
 	return true
 
@@ -115,6 +124,7 @@ func restore_defaults() -> void:
 			if event != null:
 				InputMap.action_add_event(action, event)
 	_config.clear()
+	_config.set_value("meta", "version", BINDINGS_VERSION)
 	_config.save(BINDINGS_PATH)
 
 func get_action_label(action: String) -> String:

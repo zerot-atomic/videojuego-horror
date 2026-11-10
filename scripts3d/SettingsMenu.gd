@@ -44,8 +44,8 @@ func _ready() -> void:
 
 func _make_panel_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.012, 0.009, 0.018, 0.9)
-	style.border_color = Color(0.34, 0.23, 0.40, 0.78)
+	style.bg_color = Color(0.012, 0.009, 0.018, 0.96)
+	style.border_color = Color(0.45, 0.32, 0.52, 0.88)
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(2)
 	style.content_margin_left = 24
@@ -60,32 +60,32 @@ func _make_menu_button(label_text: String) -> Button:
 	button.custom_minimum_size = Vector2(0, 44)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.add_theme_font_size_override("font_size", 15)
-	button.add_theme_color_override("font_color", Color(0.92, 0.89, 0.94, 1.0))
-	button.add_theme_color_override("font_hover_color", Color(1.0, 0.96, 1.0, 1.0))
-	button.add_theme_color_override("font_pressed_color", Color(0.82, 0.70, 0.91, 1.0))
+	button.add_theme_color_override("font_color", Color(0.96, 0.94, 0.98, 1.0))
+	button.add_theme_color_override("font_hover_color", Color(1.0, 0.98, 1.0, 1.0))
+	button.add_theme_color_override("font_pressed_color", Color(0.88, 0.78, 0.94, 1.0))
 
 	var normal := StyleBoxFlat.new()
-	normal.bg_color = Color(0.055, 0.043, 0.068, 0.92)
-	normal.border_color = Color(0.27, 0.21, 0.32, 0.85)
+	normal.bg_color = Color(0.07, 0.05, 0.09, 0.95)
+	normal.border_color = Color(0.35, 0.27, 0.42, 0.92)
 	normal.set_border_width_all(1)
 	normal.content_margin_left = 15
 	normal.content_margin_right = 15
 	button.add_theme_stylebox_override("normal", normal)
 
 	var hover := normal.duplicate() as StyleBoxFlat
-	hover.bg_color = Color(0.15, 0.10, 0.18, 0.97)
-	hover.border_color = Color(0.64, 0.43, 0.73, 0.96)
+	hover.bg_color = Color(0.18, 0.12, 0.22, 0.98)
+	hover.border_color = Color(0.72, 0.52, 0.82, 0.98)
 	button.add_theme_stylebox_override("hover", hover)
 	button.add_theme_stylebox_override("focus", hover)
 
 	var pressed := normal.duplicate() as StyleBoxFlat
-	pressed.bg_color = Color(0.22, 0.13, 0.27, 0.98)
-	pressed.border_color = Color(0.72, 0.52, 0.82, 1.0)
+	pressed.bg_color = Color(0.28, 0.18, 0.34, 0.99)
+	pressed.border_color = Color(0.80, 0.62, 0.88, 1.0)
 	button.add_theme_stylebox_override("pressed", pressed)
 
 	var disabled := normal.duplicate() as StyleBoxFlat
-	disabled.bg_color = Color(0.035, 0.03, 0.04, 0.74)
-	disabled.border_color = Color(0.14, 0.12, 0.15, 0.72)
+	disabled.bg_color = Color(0.04, 0.035, 0.05, 0.8)
+	disabled.border_color = Color(0.18, 0.15, 0.2, 0.8)
 	button.add_theme_stylebox_override("disabled", disabled)
 	return button
 
@@ -136,10 +136,10 @@ func _build_controls_tab(tabs: TabContainer) -> void:
 	page.add_theme_constant_override("separation", 8)
 	tabs.add_child(page)
 	var instructions := Label.new()
-	instructions.text = "Controles tipo tanque (Silent Hill / Resident Evil clásico): W/Stick arriba = adelante, S/Stick abajo = atrás, A/Stick izq = girar izq, D/Stick der = girar der. Correr = Shift / L3 / botón CORRER (mantener). Selecciona Reasignar y pulsa una tecla o botón del mando; para asignar un eje, mueve el stick."
+	instructions.text = "Controles tipo tanque (Silent Hill / Resident Evil clásico): W/Stick arriba = adelante, S/Stick abajo = atrás, A/Stick izquierda = girar izquierda, D/Stick derecha = girar derecha. Correr = Shift / L3 / botón CORRER (mantener). Selecciona Reasignar y pulsa una tecla o botón del mando; para asignar un eje, mueve el stick."
 	instructions.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	instructions.add_theme_color_override("font_color", Color(0.77, 0.67, 0.83, 0.95))
-	instructions.add_theme_font_size_override("font_size", 13)
+	instructions.add_theme_color_override("font_color", Color(0.92, 0.89, 0.94, 0.98))
+	instructions.add_theme_font_size_override("font_size", 14)
 	page.add_child(instructions)
 
 	var scroll := ScrollContainer.new()

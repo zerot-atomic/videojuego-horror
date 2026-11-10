@@ -87,8 +87,8 @@ func _ready():
 
 	var hint = Label.new()
 	hint.text = "W/S avanzar · A/D girar · E examinar · C agacharse · Tab diario · Shift correr · Esc pausa"
-	hint.add_theme_color_override("font_color", Color(0.62, 0.57, 0.66, 0.82))
-	hint.add_theme_font_size_override("font_size", 10)
+	hint.add_theme_color_override("font_color", Color(0.85, 0.80, 0.88, 0.95))
+	hint.add_theme_font_size_override("font_size", 11)
 	vbox.add_child(hint)
 
 	_build_message_box()
@@ -100,8 +100,8 @@ func _ready():
 
 func _make_panel_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.012, 0.009, 0.018, 0.88)
-	style.border_color = Color(0.34, 0.23, 0.40, 0.78)
+	style.bg_color = Color(0.012, 0.009, 0.018, 0.95)
+	style.border_color = Color(0.55, 0.39, 0.63, 1.0)
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(2)
 	style.content_margin_left = 12

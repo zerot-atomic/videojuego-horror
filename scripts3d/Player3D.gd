@@ -284,7 +284,7 @@ func _apply_tank_movement(delta) -> bool:
 
 	# Girar el personaje (tanque)
 	if abs(turn_input) > 0.01:
-		facing_angle += turn_input * rotation_speed * delta
+		facing_angle -= turn_input * rotation_speed * delta
 		rotation.y = facing_angle
 
 	# Movimiento adelante/atrás relativo al cuerpo

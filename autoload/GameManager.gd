@@ -221,7 +221,7 @@ const GAMEPLAY := {
 		"corruption_overlay_saturation": 0.36,
 		"corruption_overlay_value": 0.34,
 		"corruption_overlay_alpha_base": 0.0,
-		"spawn_y_offset": 0.1,
+		"spawn_y_offset": -0.1,
 		"establo_patrol_speed_multiplier": 1.0,
 		"labyrinth_chase_speed_multiplier": 1.05,
 		"labyrinth_attack_sanity_damage": 24.0,

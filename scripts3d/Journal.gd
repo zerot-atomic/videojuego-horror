@@ -52,8 +52,8 @@ func _ready():
 
 func _make_panel_style() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.012, 0.009, 0.018, 0.9)
-	style.border_color = Color(0.34, 0.23, 0.40, 0.78)
+	style.bg_color = Color(0.012, 0.009, 0.018, 0.96)
+	style.border_color = Color(0.45, 0.32, 0.52, 0.88)
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(2)
 	style.content_margin_left = 24

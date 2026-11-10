@@ -352,6 +352,16 @@ func _add_exit(node_name: String, at: Vector3, target: String, w: float, h: floa
 
 func _build_lights() -> void:
 	var lm := GameManager.GAMEPLAY.labyrinth
+	# Directional light for shadows (matches other rooms: ShadowCaster)
+	var sun := DirectionalLight3D.new()
+	sun.name = "ShadowCaster"
+	sun.transform = Transform3D(0.8, -0.5, 0.33, 0, 0.55, 0.83, -0.6, -0.66, 0.44, 0, 8, 0)
+	sun.light_energy = 0.6
+	sun.shadow_enabled = true
+	sun.shadow_bias = 0.01
+	sun.shadow_normal_bias = 0.05
+	sun.shadow_distance = 50.0
+	add_child(sun)
 	# Single fill light
 	var fill := OmniLight3D.new()
 	fill.name = "LuzRelleno"

@@ -13,3 +13,32 @@ Este proyecto usa `codebase-memory-mcp`. Prefiere `search_graph`, `trace_path`, 
 - Mantén el mismo número de versión cuando el usuario define una hotfix (por ejemplo 0.1.7b). No inventes sufijos o subversiones para encubrir una entrega que no está validada.
 - Al balancear movimiento o persecuciones, mide el tiempo de ruta por dificultad, la velocidad efectiva del jugador y los márgenes de alcance/reinicio del perseguidor. No declares una dificultad finalizable basándote solo en que los scripts compilan.
 - Trata como límites de diseño la cámara original, el spawn/cápsula sobre el suelo y la cordura ya aprobada. Solo se modifican con instrucción explícita del usuario.
+
+## Cómo ejecutar Godot
+
+Godot 4.7.2 NO está instalado ni en el PATH. Es solo un .exe en la carpeta raíz del proyecto, junto a project.godot. Nunca ejecutes `godot` a secas. Localízalo con `Get-ChildItem -Filter 'Godot*.exe'` y usa la variante con '_console' si existe (imprime en la terminal; la otra puede no mostrar salida y requiere --log-file docs/godot.log).
+
+Plantilla PowerShell:
+```powershell
+$GODOT = (Get-ChildItem -Filter 'Godot*console*.exe' | Select-Object -First 1).FullName
+if (-not $GODOT) { $GODOT = (Get-ChildItem -Filter 'Godot*.exe' | Select-Object -First 1).FullName }
+& $GODOT --headless --path . --quit-after 120 2>&1 | Select-String 'ERROR|WARNING'
+```
+
+Comprobar un script:
+```powershell
+& $GODOT --headless --path . --check-only --script res://RUTA.gd
+```
+
+Probar una escena:
+```powershell
+& $GODOT --headless --path . res://scenes3d/X.tscn --quit-after 120
+```
+
+En worktrees el .exe no está (no se versiona): usa la ruta ABSOLUTA del exe de la carpeta original.
+
+Si tu entorno no puede ejecutar un .exe de Windows, NO inventes resultados: deja scripts .ps1/.bat en tools/qa/ para que el usuario los ejecute y pegue la salida, y marca todo como "No verificado ejecutando". El .exe no se versiona, ni se mueve, ni se borra.
+
+## Regla de versionado y documentación
+
+Tras cada cambio, actualiza versión (project.godot), CHANGELOG.md y la documentación afectada.
