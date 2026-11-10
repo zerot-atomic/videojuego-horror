@@ -1,0 +1,71 @@
+LA COSECHA DEL COLOR — BETA 0.2.14
+Fecha de compilación: 2026-11-09
+Motor: Godot 4.7.2
+
+PAQUETES
+Windows x86_64
+  Archivo: La_Cosecha_del_Color_0.2.14-beta.exe (pendiente build)
+  PCK integrado en el ejecutable.
+
+CAMBIOS DE 0.2.14 (Fase 0-1 COMPLETA)
+
+Fase 0 — Fixes Críticos (6):
+- Controles tanque invertidos: _apply_tank_movement() negado turn_input (Godot: rotación Y+ = izquierda)
+- InputProfiles v2: migración automática limpia bindings invertidos v1
+- Transiciones: spawn markers corregidos (campo_cultivo→laberinto, establo, bosque, atico, casa_principal)
+- Spawn markers fuera de ExitArea3D con offset Y=0.1 (evita re-triggering)
+- Jugador flotando: spawn_y_offset 0.1 → -0.1 (cápsula base en 0.04m)
+- UI Journal: opacidad 0.96, borde 0.88, color borde (0.45,0.32,0.52)
+
+Fase 1a — Exteriores (5 zonas):
+- camino_entrada, campo_cultivo, crater_meteorito, bosque, pozo
+- Niebla centralizada GameManager.ZONE_FOG (11 zonas)
+- ShadowCaster DirectionalLight3D en todas
+
+Fase 1b — Interiores:
+- casa_principal: lobby, sala, cocina, almacén, puertas, escalera, suelo CSGBox3D
+- atico: pistas, trampilla, transiciones verificadas
+
+Fase 1c — Laberinto + Perseguidor:
+- RoomLabinth.gd: laberinto procedural escalable por dificultad (7x7/9x9/11x11/13x13)
+- MultiMesh paredes, áreas de salida, A* navigation API
+- Wrapper3D.gd: IA 5 estados (PATROL/SEARCHING/CHASING/STUMBLING/ATTACKING)
+- Chase rubber-band, stumble mechanics, visión hierba alta
+
+Fase 1d — Establo + Visiones + Finales:
+- Establo: Wrapper3D patrol points, niebla ZONE_FOG["establo"]
+- Vision.gd: 3 visiones (padre/madre/hijo) activadas por pistas clave
+- Ending.gd: bueno requiere all_visions_seen + corruption_time < límite
+- Save/Load: persiste sanity, corruption_time, clues, visions, inventory, difficulty
+- Límites tiempo: Historia 1800s, Normal 900s, Difícil 1200s, Lovecraft 1200s
+
+Fase 1e — UI/HUD/Menús:
+- SettingsMenu: volumen, fullscreen, rebind controles (InputProfiles)
+- HUD: barra cordura, 4 niveles corrupción, cola mensajes fade in/out
+- PauseMenu: reanudar, guardar, opciones, menú principal
+- MainMenu: backdrop animado (shaders), selector 4 dificultades, créditos
+
+VERIFICACIÓN
+- Las 4 dificultades ganables con buen final alcanzable
+- Cadenas transición bidireccionales: bosque↔laberinto, campo↔laberinto, casa↔atico, campo→establo
+- Exterior scenes: ShadowCaster presente
+- Spawn markers: offset Y=0.1, fuera de colisiones ExitArea3D
+- Vision system: triggers en ganado_establo, diario_madre, zapato_hijo
+- Save/Load: roundtrip preserva estado completo
+- Godot 4.7.2 headless: inicia y sale código 0
+- Rama integración: https://github.com/zerot-atomic/videojuego-horror/tree/integracion
+
+CONTROLES (tanque Silent Hill/RE clásico)
+W/S: adelante/atrás relativo al cuerpo
+A/D: girar personaje (tanque)
+E: examinar/interactuar
+C: agacharse
+Shift: correr (consume cordura >30% corrupción)
+Tab: diario
+Esc: pausa
+
+DIFICULTADES
+Historia: cordura alta, corrupción lenta, Grapper pasivo, velocidad historia
+Normal: equilibrio estándar, Grapper presión media
+Difícil: cordura baja, corrupción rápida, Grapper agresivo, sprint limitado
+Lovecraft: máximo reto, corrupción extrema, Grapper implacable, sin red
